@@ -188,6 +188,7 @@ iframe[src*='youtube.com'], iframe[src*='youtu.be'], iframe[src*='vimeo.com'] { 
   height: 86px;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 100' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' fill-opacity='.55' d='M0 48C175 8 350 88 525 48S875 8 1050 48S1225 88 1400 48V100H0Z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M0 55C138 15 275 90 413 55S688 15 825 55S963 90 1100 55V100H0Z'/%3E%3C/svg%3E");
+    background-image: linear-gradient(180deg, rgba(70, 180, 220, 0) 0%, rgba(35, 142, 190, .78) 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 100' preserveAspectRatio='none'%3E%3Cpath fill='%23dff7ff' fill-opacity='.72' d='M0 48C175 8 350 88 525 48S875 8 1050 48S1225 88 1400 48V100H0Z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23f4fcff' d='M0 55C138 15 275 90 413 55S688 15 825 55S963 90 1100 55V100H0Z'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
   background-position: 0 100%, 0 100%;
   background-size: 1400px 100%, 1100px 86%;
@@ -278,6 +279,7 @@ iframe[src*='youtube.com'], iframe[src*='youtu.be'], iframe[src*='vimeo.com'] { 
 /* The white wave is only used in light mode. */
 html[data-theme='dark'] #page-header.full_page::after {
   display: none;
+  background-image: linear-gradient(180deg, rgba(13, 25, 48, 0) 0%, rgba(12, 82, 128, .9) 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 100' preserveAspectRatio='none'%3E%3Cpath fill='%231b5775' fill-opacity='.8' d='M0 48C175 8 350 88 525 48S875 8 1050 48S1225 88 1400 48V100H0Z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23102f4a' d='M0 55C138 15 275 90 413 55S688 15 825 55S963 90 1100 55V100H0Z'/%3E%3C/svg%3E");
 }
 
 html[data-theme='dark'] #page-header.full_page #scroll-down {
