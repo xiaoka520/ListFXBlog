@@ -67,7 +67,7 @@ disable_top_img: false
 default_top_img: transparent
 
 # The banner image of index page
-index_img: transparent
+index_img: https://api.listfx.top/
 
 # The banner image of archive page
 archive_img: false
