@@ -178,6 +178,13 @@ iframe[src*='youtube.com'], iframe[src*='youtu.be'], iframe[src*='vimeo.com'] { 
   -webkit-backdrop-filter: blur(12px) saturate(135%);
 }
 
+#page-header.full_page.nav-fixed.fixed #nav {
+  top: 4px;
+  right: 8px;
+  left: 8px;
+  border-radius: 12px;
+}
+
 #page-header.full_page #nav a,
 #page-header.full_page #nav .site-name,
 #page-header.full_page #nav .site-page {
@@ -324,6 +331,7 @@ html[data-theme='dark'] #page-header.full_page::before {
 
 @media screen and (max-width: 768px) {
   #page-header.full_page #nav { top: 10px; right: 10px; left: 10px; border-radius: 13px; }
+  #page-header.full_page.nav-fixed.fixed #nav { top: 3px; right: 5px; left: 5px; border-radius: 10px; }
 }
 
 html[data-theme='dark'] #page-header.full_page #scroll-down {
