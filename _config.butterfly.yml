@@ -396,7 +396,8 @@ darkmode:
 # Show scroll percent in scroll-to-top button
 rightside_scroll_percent: false
 
-# Don't modify the following settings unless you know how they work
+    - '<link rel="preconnect" href="https://api.listfx.top">'
+    - '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>'
 # Choose: readmode,translate,darkmode,hideAside,toc,chat,comment
 # Don't repeat the same value
 rightside_item_order:
