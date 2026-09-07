@@ -170,10 +170,10 @@ iframe[src*='youtube.com'], iframe[src*='youtu.be'], iframe[src*='vimeo.com'] { 
   left: 18px;
   z-index: 20;
   width: auto;
-  border: 1px solid rgba(255, 255, 255, .34);
+  border: 1px solid rgba(44, 62, 80, .16);
   border-radius: 16px;
-  background: rgba(10, 29, 49, .42);
-  box-shadow: 0 10px 30px rgba(3, 18, 32, .2);
+  background: rgba(255, 255, 255, .64);
+  box-shadow: 0 10px 30px rgba(45, 65, 85, .2);
   backdrop-filter: blur(12px) saturate(135%);
   -webkit-backdrop-filter: blur(12px) saturate(135%);
 }
@@ -185,16 +185,37 @@ iframe[src*='youtube.com'], iframe[src*='youtu.be'], iframe[src*='vimeo.com'] { 
   border-radius: 12px;
 }
 
-#page-header.full_page #nav a,
-#page-header.full_page #nav .site-name,
-#page-header.full_page #nav .site-page {
-  color: #fff !important;
+html:not([data-theme='dark']) #page-header.full_page #nav a,
+html:not([data-theme='dark']) #page-header.full_page #nav .site-name,
+html:not([data-theme='dark']) #page-header.full_page #nav #toggle-menu,
+html:not([data-theme='dark']) #page-header.full_page #nav .site-page {
+  color: var(--listfx-text) !important;
+  text-shadow: none;
+}
+
+html:not([data-theme='dark']) #page-header.full_page #nav .menus_item:hover > a,
+html:not([data-theme='dark']) #page-header.full_page #nav .menus_item:hover > a > span,
+html:not([data-theme='dark']) #page-header.full_page #nav .site-page:hover {
+  color: var(--listfx-accent) !important;
+}
+
+html[data-theme='dark'] #page-header.full_page #nav {
+  border-color: rgba(255, 255, 255, .2);
+  background: rgba(10, 29, 49, .58);
+  box-shadow: 0 10px 30px rgba(3, 18, 32, .38);
+}
+
+html[data-theme='dark'] #page-header.full_page #nav a,
+html[data-theme='dark'] #page-header.full_page #nav .site-name,
+html[data-theme='dark'] #page-header.full_page #nav #toggle-menu,
+html[data-theme='dark'] #page-header.full_page #nav .site-page {
+  color: var(--white) !important;
   text-shadow: 0 1px 4px rgba(0, 0, 0, .42);
 }
 
-#page-header.full_page #nav .menus_item:hover > a,
-#page-header.full_page #nav .menus_item:hover > a > span,
-#page-header.full_page #nav .site-page:hover {
+html[data-theme='dark'] #page-header.full_page #nav .menus_item:hover > a,
+html[data-theme='dark'] #page-header.full_page #nav .menus_item:hover > a > span,
+html[data-theme='dark'] #page-header.full_page #nav .site-page:hover {
   color: #bcefff !important;
 }
 
