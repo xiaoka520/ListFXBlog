@@ -358,3 +358,41 @@ html[data-theme='dark'] #page-header.full_page::before {
 html[data-theme='dark'] #page-header.full_page #scroll-down {
   bottom: 22px;
 }
+
+/* Homepage hero: blurred at rest, sharp on hover, with subtle mouse parallax. */
+#page-header.full_page.hero-parallax {
+  background-image: none !important;
+  overflow: hidden;
+}
+
+#page-header.full_page.hero-parallax .hero-parallax__image {
+  pointer-events: none;
+  position: absolute;
+  inset: -18px;
+  z-index: 0;
+  background-position: center;
+  background-size: cover;
+  filter: blur(8px) saturate(.86);
+  transform: translate3d(var(--hero-x, 0px), var(--hero-y, 0px), 0) scale(1.06);
+  transition: filter .55s ease, transform .18s ease-out;
+  will-change: transform, filter;
+}
+
+#page-header.full_page.hero-parallax:hover .hero-parallax__image {
+  filter: blur(0) saturate(1.08);
+}
+
+#page-header.full_page.hero-parallax::before,
+#page-header.full_page.hero-parallax::after { z-index: 2; }
+#page-header.full_page.hero-parallax #nav,
+#page-header.full_page.hero-parallax #site-info,
+#page-header.full_page.hero-parallax #scroll-down { z-index: 3; }
+
+@media (prefers-reduced-motion: reduce), (max-width: 768px), (hover: none), (pointer: coarse) {
+  #page-header.full_page.hero-parallax .hero-parallax__image {
+    filter: none !important;
+    transition: none;
+    will-change: auto;
+    transform: scale(1.06);
+  }
+}

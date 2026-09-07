@@ -19,9 +19,7 @@ nav:
 
 menu:
   首页: / || fas fa-home
-  时光轴: /时光轴/ || fas fa-clock
   友人帐: /友人帐/ || fas fa-user-friends
-  说说: /说说/ || fas fa-comment-dots
   帮助: /help/ || fas fa-circle-question
 
 # --------------------------------------
@@ -103,7 +101,7 @@ cover:
   archives_enable: true
   # When cover is not set, the default cover is displayed
   default_cover:
-    # - xxx.jpg
+    # - https://api.listfx.top/
 
 # Replace Broken Images
 error_img:
@@ -260,7 +258,7 @@ footer:
   nav:
   owner:
     enable: true
-    since: 2025
+    since: 2022
   # Copyright of theme and framework
   copyright:
     enable: true
@@ -394,7 +392,7 @@ darkmode:
   end:
 
 # Show scroll percent in scroll-to-top button
-rightside_scroll_percent: false
+rightside_scroll_percent: true
 
     - '<link rel="preconnect" href="https://api.listfx.top">'
     - '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>'
@@ -815,7 +813,7 @@ display_mode: light
 
 # Configuration for beautifying the content of the article
 beautify:
-  enable: false
+  enable: true
   # Specify the field to beautify (site or post)
   field: post
   # Specify the icon to be used as a prefix for the title, such as '\f0c1'
@@ -846,7 +844,7 @@ hr_icon:
 # Typewriter Effect
 # https://github.com/disjukr/activate-power-mode
 activate_power_mode:
-  enable: false
+  enable: true
   colorful: true
   shake: true
   mobile: false
@@ -1073,6 +1071,7 @@ inject:
   bottom:
     - <script src="/js/theme-toggle-v4.js"></script>
     - <script src="/js/rightside-theme-widget.js"></script>
+    - <script src="/js/hero-parallax.js"></script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
