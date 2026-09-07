@@ -263,7 +263,7 @@ footer:
   copyright:
     enable: true
     version: true
-  custom_text: '<span class="footer-hitokoto" aria-live="polite"> · 一言：凡是过往，皆为序章。——莎士比亚《暴风雨》</span>'
+  custom_text: '<span class="footer-hitokoto" aria-live="polite"> · 凡是过往，皆为序章。——莎士比亚《暴风雨》</span>'
 
 # --------------------------------------
 # Aside Settings
