@@ -17,7 +17,7 @@
         if (typeof data.hitokoto !== 'string' || !data.hitokoto.trim()) return;
         const author = typeof data.from_who === 'string' ? data.from_who : '';
         const source = typeof data.from === 'string' && data.from ? `《${data.from}》` : '';
-        quote.textContent = ` · 一言：${data.hitokoto}${author || source ? `——${author}${source}` : ''}`;
+        quote.textContent = ` · ${data.hitokoto}${author || source ? `——${author}${source}` : ''}`;
       })
       .catch(() => {})
       .finally(() => clearTimeout(timer));
