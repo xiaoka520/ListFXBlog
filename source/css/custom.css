@@ -359,35 +359,9 @@ html[data-theme='dark'] #page-header.full_page #scroll-down {
   bottom: 22px;
 }
 
-/* Footer quote, using the same endpoint as NapCatQQ WebUI. */
-#footer-hitokoto {
-  max-width: 760px;
-  margin: 20px auto 0;
-  padding: 16px 20px;
-  border-top: 1px solid var(--listfx-border);
-  text-align: center;
-  overflow-wrap: anywhere;
-}
-#footer-hitokoto .hitokoto-text {
-  margin: 0 0 8px;
-  font-family: 'LXGW WenKai', sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
-#footer-hitokoto .hitokoto-source { margin: 0 0 10px; opacity: .75; }
-#footer-hitokoto .hitokoto-refresh {
-  padding: 4px 14px;
-  border: 1px solid currentColor;
-  border-radius: 20px;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  cursor: pointer;
-}
-#footer-hitokoto .hitokoto-refresh:hover { color: var(--listfx-accent); }
-#footer-hitokoto .hitokoto-refresh:focus-visible { outline: 2px solid var(--listfx-accent); outline-offset: 3px; }
-#footer-hitokoto .hitokoto-refresh:disabled { opacity: .5; cursor: wait; }
-#footer-hitokoto .hitokoto-status { display: block; font-size: .85em; }
+/* Inline quote in the existing footer content. */
+.footer_custom_text { margin-left: 8px; opacity: .8; }
+.footer-hitokoto { overflow-wrap: anywhere; }
 
 /* Homepage hero: blurred at rest, sharp on hover, with subtle mouse parallax. */
 #page-header.full_page.hero-parallax {
