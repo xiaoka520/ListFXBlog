@@ -7,9 +7,25 @@
     const image = document.createElement('div');
     image.className = 'hero-parallax__image';
     image.setAttribute('aria-hidden', 'true');
-    image.style.backgroundImage = getComputedStyle(hero).backgroundImage;
+    const background = getComputedStyle(hero).backgroundImage;
+    image.style.backgroundImage = background;
     hero.prepend(image);
     hero.classList.add('hero-parallax');
+
+    const imageUrl = background.match(/url\(["']?([^"')]+)["']?\)/)?.[1];
+    if (imageUrl) {
+      hero.classList.add('hero-parallax--loading');
+      const preload = new Image();
+      preload.onload = () => {
+        if (preload.decode) {
+          preload.decode().catch(() => {}).finally(() => hero.classList.remove('hero-parallax--loading'));
+        } else {
+          hero.classList.remove('hero-parallax--loading');
+        }
+      };
+      preload.onerror = () => hero.classList.remove('hero-parallax--loading');
+      preload.src = imageUrl;
+    }
 
     const motion = matchMedia('(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) and (min-width: 769px)');
     hero.addEventListener('mousemove', event => {

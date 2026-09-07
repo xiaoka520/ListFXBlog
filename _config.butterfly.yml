@@ -263,7 +263,15 @@ footer:
   copyright:
     enable: true
     version: true
-  custom_text:
+  custom_text: |
+    <section id="footer-hitokoto" aria-label="随机一言">
+      <div class="hitokoto-content" aria-live="polite">
+        <p class="hitokoto-text">凡是过往，皆为序章。</p>
+        <p class="hitokoto-source">—— 莎士比亚《暴风雨》</p>
+      </div>
+      <button type="button" class="hitokoto-refresh">换一句</button>
+      <span class="hitokoto-status" role="status"></span>
+    </section>
 
 # --------------------------------------
 # Aside Settings
@@ -1072,6 +1080,7 @@ inject:
     - <script src="/js/theme-toggle-v4.js"></script>
     - <script src="/js/rightside-theme-widget.js"></script>
     - <script src="/js/hero-parallax.js"></script>
+    - <script src="/js/footer-hitokoto.js"></script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
