@@ -116,9 +116,9 @@ html:not([data-theme='dark']) .highlight .code .title,
 html:not([data-theme='dark']) .highlight .code .function { color: #0077aa !important; }
 html:not([data-theme='dark']) .highlight .code .meta { color: #8b3c9b !important; }
 html[data-theme='dark'] {
-  --listfx-glass: rgba(10, 29, 49, .58);
+  --listfx-glass: rgba(255, 255, 255, .06);
   --listfx-border: rgba(255, 255, 255, .2);
-  --listfx-shadow: 0 10px 30px rgba(3, 18, 32, .38);
+  --listfx-shadow: 0 10px 30px rgba(0, 0, 0, .25);
   --hl-bg: #0b0f19 !important;
   --hltools-bg: #111726 !important;
   --hlnumber-bg: #0b0f19 !important;
@@ -372,7 +372,7 @@ html #body-wrap #pagination .extend,
 html #body-wrap #page-header #post-info,
 html #rightside .theme-toggle-widget {
   background: var(--listfx-glass);
-  border: 1px solid var(--listfx-border);
+  border: none;
   border-radius: var(--listfx-radius);
   box-shadow: var(--listfx-shadow);
   backdrop-filter: var(--listfx-backdrop);
