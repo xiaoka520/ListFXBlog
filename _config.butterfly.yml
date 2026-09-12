@@ -65,7 +65,7 @@ disable_top_img: false
 default_top_img: transparent
 
 # The banner image of index page
-index_img: https://api.listfx.top/
+index_img: https://api.listfx.top/?slot=home
 
 # The banner image of archive page
 archive_img: false
@@ -101,7 +101,7 @@ cover:
   archives_enable: true
   # When cover is not set, the default cover is displayed
   default_cover:
-    # - https://api.listfx.top/
+      - https://api.listfx.top/?slot=cover
 
 # Replace Broken Images
 error_img:
