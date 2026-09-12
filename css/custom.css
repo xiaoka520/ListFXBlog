@@ -2,9 +2,11 @@
 :root {
   --listfx-accent: #49b1f5;
   --listfx-text: #2c3e50;
-  --listfx-glass: rgba(255, 255, 255, .78);
-  --listfx-border: rgba(255, 255, 255, .72);
-  --listfx-shadow: 0 12px 30px -12px rgba(45, 65, 85, .28);
+  --listfx-glass: rgba(255, 255, 255, .64);
+  --listfx-border: rgba(44, 62, 80, .16);
+  --listfx-shadow: 0 10px 30px rgba(45, 65, 85, .2);
+  --listfx-radius: 16px;
+  --listfx-backdrop: blur(12px) saturate(135%);
 }
 body {
   background: radial-gradient(circle at 8% 12%, rgba(73,177,245,.2), transparent 30%), radial-gradient(circle at 88% 20%, rgba(255,113,66,.14), transparent 28%), radial-gradient(circle at 75% 88%, rgba(123,97,255,.13), transparent 30%), linear-gradient(135deg, #eef7ff 0%, #fff8f2 48%, #f3efff 100%);
@@ -114,9 +116,9 @@ html:not([data-theme='dark']) .highlight .code .title,
 html:not([data-theme='dark']) .highlight .code .function { color: #0077aa !important; }
 html:not([data-theme='dark']) .highlight .code .meta { color: #8b3c9b !important; }
 html[data-theme='dark'] {
-  --listfx-glass: rgba(21,25,35,.7);
-  --listfx-border: rgba(255,255,255,.09);
-  --listfx-shadow: 0 12px 30px -12px rgba(0,0,0,.65);
+  --listfx-glass: rgba(10, 29, 49, .58);
+  --listfx-border: rgba(255, 255, 255, .2);
+  --listfx-shadow: 0 10px 30px rgba(3, 18, 32, .38);
   --hl-bg: #0b0f19 !important;
   --hltools-bg: #111726 !important;
   --hlnumber-bg: #0b0f19 !important;
@@ -357,6 +359,28 @@ html[data-theme='dark'] #page-header.full_page::before {
 
 html[data-theme='dark'] #page-header.full_page #scroll-down {
   bottom: 22px;
+}
+
+/* Shared glass surfaces: match the navigation in both themes. */
+html #body-wrap #page-header #nav,
+html #body-wrap #recent-posts > .recent-post-item,
+html #body-wrap #aside-content .card-widget,
+html #body-wrap .layout > div:first-child:not(.recent-posts),
+html #body-wrap #nav .menus_items .menus_item .menus_item_child,
+html #body-wrap #pagination .page-number:not(.current),
+html #body-wrap #pagination .extend,
+html #body-wrap #page-header #post-info,
+html #rightside .theme-toggle-widget {
+  background: var(--listfx-glass);
+  border: 1px solid var(--listfx-border);
+  border-radius: var(--listfx-radius);
+  box-shadow: var(--listfx-shadow);
+  backdrop-filter: var(--listfx-backdrop);
+  -webkit-backdrop-filter: var(--listfx-backdrop);
+}
+
+@media screen and (max-width: 768px) {
+  :root { --listfx-radius: 13px; }
 }
 
 /* Inline quote in the existing footer content. */
