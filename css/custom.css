@@ -31,7 +31,7 @@ body::before {
 #body-wrap #pagination .extend,
 #page-header #post-info {
   background: var(--listfx-glass);
-  border: 1px solid var(--listfx-border);
+  border: none;
   box-shadow: var(--listfx-shadow);
   backdrop-filter: blur(12px) saturate(130%);
   -webkit-backdrop-filter: blur(12px) saturate(130%);
@@ -381,6 +381,14 @@ html #rightside .theme-toggle-widget {
 
 @media screen and (max-width: 768px) {
   :root { --listfx-radius: 13px; }
+}
+
+/* Keep article glass shells borderless without changing content borders. */
+#body-wrap #post,
+#body-wrap #recent-posts > .recent-post-item,
+#body-wrap #page-header #post-info {
+  border: 0 !important;
+  outline: none;
 }
 
 /* Inline quote in the existing footer content. */
