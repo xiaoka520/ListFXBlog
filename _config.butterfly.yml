@@ -45,8 +45,8 @@ code_blocks:
 # Formal:
 #   icon: link || the description || color
 social:
-  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
-  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+   fab fa-github: https://github.com/xiaoka520 || Github || '#24292e'
+   fas fa-envelope: mailto:caoenming520@icloud.com || Email || '#4a7dbe'
 
 # --------------------------------------
 # Image Settings
@@ -56,7 +56,7 @@ favicon: /img/favicon.png
 
 avatar:
   img: /img/avatar.jpg
-  effect: false
+  effect: true
 
 # Disable all banner images
 disable_top_img: false
