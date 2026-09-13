@@ -370,14 +370,6 @@ html #rightside .theme-toggle-widget:hover {
   :root { --listfx-radius: 13px; }
 }
 
-/* Keep article glass shells borderless without changing content borders. */
-#body-wrap #post,
-#body-wrap #recent-posts > .recent-post-item,
-#body-wrap #page-header #post-info {
-  border: 0 !important;
-  outline: none;
-}
-
 /* Inline quote in the existing footer content. */
 .footer_custom_text { margin-left: 8px; opacity: .8; }
 .footer-hitokoto { overflow-wrap: anywhere; }

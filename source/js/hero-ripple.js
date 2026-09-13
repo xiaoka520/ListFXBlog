@@ -29,6 +29,17 @@
   const quality = () =>
     window.matchMedia('(hover: none), (pointer: coarse)').matches ? 0.5 : 0.7;
 
+  /* Bitmap pixels per layout pixel. Guarded because a hidden hero reports an
+     offsetWidth of 0 and an unguarded divide would poison the maths with
+     Infinity/NaN. */
+  const pixelScale = () => (canvas.offsetWidth ? canvas.width / canvas.offsetWidth : 1);
+
+  /* One reused lookup table per active ripple: rebuilding a Float32Array every
+     frame is pure garbage for the collector. */
+  const LUT_LIMIT = 1024;
+  const luts = [];
+  const lutFor = slot => (luts[slot] ||= new Float32Array(LUT_LIMIT + 1));
+
   /* Size the bitmap to the layout box, so the CSS transform that aligns the
      canvas with the hero image never affects our pixel maths. */
   const measure = () => {
@@ -96,7 +107,7 @@
     if (!source || !target) return;
     const w = canvas.width;
     const h = canvas.height;
-    const q = w / canvas.offsetWidth;
+    const q = pixelScale();
     const src = new Uint32Array(source.data.buffer);
     const out = new Uint32Array(target.data.buffer);
     out.set(src);
@@ -118,8 +129,8 @@
       const outer = (travelled + RING) * q;
       const radius = travelled * q;
       const envelope = 1 - (t / LIFETIME) * (t / LIFETIME);
-      const reach = Math.min(1024, Math.ceil(outer) + 1);
-      const lut = new Float32Array(reach + 1);
+      const reach = Math.min(LUT_LIMIT, Math.ceil(outer) + 1);
+      const lut = lutFor(active.length);
       for (let i = 0; i <= reach; i++) {
         const diff = i - radius;
         lut[i] = peak * Math.exp(-diff * diff / sigma2) * envelope *
@@ -175,7 +186,7 @@
   const rings = now => {
     const w = canvas.width;
     const h = canvas.height;
-    const q = w / canvas.offsetWidth;
+    const q = pixelScale();
     ctx.clearRect(0, 0, w, h);
     for (const ripple of ripples) {
       const t = (now - ripple.start) / 1000;
