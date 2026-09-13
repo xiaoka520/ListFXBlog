@@ -1072,6 +1072,7 @@ inject:
     - <script src="/js/theme-toggle-v4.js"></script>
     - <script src="/js/rightside-theme-widget.js"></script>
     - <script src="/js/hero-parallax.js"></script>
+    - <script src="/js/hero-ripple.js"></script>
     - <script src="/js/footer-hitokoto-inline.js"></script>
 
 # CDN Settings

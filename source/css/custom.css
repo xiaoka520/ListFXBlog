@@ -418,11 +418,32 @@ html #rightside .theme-toggle-widget:hover {
 #page-header.full_page.hero-parallax #site-info,
 #page-header.full_page.hero-parallax #scroll-down { z-index: 3; }
 
+/* Click ripple: sits on the hero image, under the header mask and content.
+   It mirrors the image layer's geometry and blur so it lines up exactly. */
+#page-header.full_page.hero-parallax .hero-ripple {
+  pointer-events: none;
+  position: absolute;
+  inset: -18px;
+  z-index: 1;
+  opacity: 0;
+  filter: blur(8px) saturate(.86);
+  transform: translate3d(var(--hero-x, 0px), var(--hero-y, 0px), 0) scale(1.06);
+  transition: filter .55s ease;
+}
+
+#page-header.full_page.hero-parallax:hover .hero-ripple {
+  filter: blur(0) saturate(1.08);
+}
+
 @media (prefers-reduced-motion: reduce), (max-width: 768px), (hover: none), (pointer: coarse) {
   #page-header.full_page.hero-parallax .hero-parallax__image {
     filter: none !important;
     transition: none;
     will-change: auto;
     transform: scale(1.06);
+  }
+  #page-header.full_page.hero-parallax .hero-ripple {
+    filter: none !important;
+    transition: none;
   }
 }
