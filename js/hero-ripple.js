@@ -53,14 +53,15 @@
     canvas.style.opacity = '0';
   };
 
-  const loadSource = () => new Promise(resolve => {
-    const layer = hero.querySelector('.hero-parallax__image') || hero;
-    const background = getComputedStyle(layer).backgroundImage;
-    const match = background && background.match(/url\(["']?([^"')]+)["']?\)/);
-    if (!match) return resolve(false);
+  /* hero-parallax.js owns the one and only request for the hero image, because
+     the photo endpoint returns a different photo per request. undefined means
+     it is still loading, '' means the pixels are unreadable. */
+  const heroImageUrl = () => window.__listfxHeroImage;
 
+  const loadSource = () => new Promise(resolve => {
+    const url = heroImageUrl();
+    if (!url) return resolve(false);
     const image = new Image();
-    image.crossOrigin = 'anonymous';
     image.onload = () => {
       const w = canvas.width;
       const h = canvas.height;
@@ -82,7 +83,7 @@
       }
     };
     image.onerror = () => resolve(false);
-    image.src = match[1];
+    image.src = url;
   });
 
   /* Refract the image: every pixel inside the ring is displaced along the
@@ -220,7 +221,12 @@
     if (event.target && event.target.closest(SKIP)) return;
 
     measure();
-    if (!source && !ringsOnly && !(await loadSource())) ringsOnly = true;
+    if (!source && !ringsOnly) {
+      // undefined: the hero image is still downloading. Waiting for it is what
+      // keeps the ripple from painting a different random photo over the hero.
+      if (heroImageUrl() === undefined) return;
+      if (!(await loadSource())) ringsOnly = true;
+    }
 
     if (fadeTimer) {
       clearTimeout(fadeTimer);
@@ -245,11 +251,12 @@
     }
   };
 
-  /* Decoding the hero image takes a round trip, so warm the pixel buffer up
-     while the page is idle. Without this the first click would sit empty for
-     as long as the image takes to download. */
+  /* Decoding the hero image takes a round trip, so warm the pixel buffer up as
+     soon as the shared image is available. Without this the first click would
+     sit empty for as long as the image takes to download. */
   const warmUp = () => {
     if (source || ringsOnly) return;
+    if (heroImageUrl() === undefined) return; // still downloading
     loadSource().then(ok => {
       if (!ok) ringsOnly = true;
     });
@@ -275,6 +282,7 @@
 
     measure();
     window.addEventListener('resize', onResize, { passive: true });
+    document.addEventListener('hero-image-ready', warmUp);
     if ('requestIdleCallback' in window) requestIdleCallback(warmUp, { timeout: 4000 });
     else setTimeout(warmUp, 2000);
     hero.addEventListener('click', onClick, { passive: true });
