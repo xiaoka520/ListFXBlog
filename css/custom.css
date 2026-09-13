@@ -205,6 +205,9 @@ html[data-theme='dark'] #page-header.full_page #nav .site-page:hover {
   display: block !important;
   visibility: visible;
   opacity: 1;
+  /* In light mode the arrow sits above the wave and drops down once the wave
+     is gone, so animate that move instead of snapping when the theme flips. */
+  transition: bottom .5s ease;
 }
 
 #page-header.full_page #scroll-down .scroll-down-effects {
@@ -230,6 +233,10 @@ html[data-theme='dark'] #page-header.full_page #nav .site-page:hover {
   background-position: 0 100%, 0 100%;
   background-size: 1400px 100%, 1100px 86%;
   animation: listfx-wave-flow 14s linear infinite;
+  opacity: 1;
+  /* display:none cannot be animated, so the dark theme fades the wave out
+     instead of removing it. */
+  transition: opacity .5s ease;
 }
 
 @keyframes listfx-wave-flow {
@@ -243,6 +250,8 @@ html[data-theme='dark'] #page-header.full_page #nav .site-page:hover {
 
 @media (prefers-reduced-motion: reduce) {
   #page-header.full_page::after { animation: none; }
+  #page-header.full_page::after,
+  #page-header.full_page #scroll-down { transition: none; }
 }
 
 /* V4 day/night widget in the right-side settings panel. */
@@ -315,8 +324,7 @@ html[data-theme='dark'] #page-header.full_page #nav .site-page:hover {
 
 /* The white wave is only used in light mode. */
 html[data-theme='dark'] #page-header.full_page::after {
-  display: none;
-  background-image: linear-gradient(180deg, rgba(13, 25, 48, 0) 0%, rgba(12, 82, 128, .9) 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 100' preserveAspectRatio='none'%3E%3Cpath fill='%231b5775' fill-opacity='.8' d='M0 48C175 8 350 88 525 48S875 8 1050 48S1225 88 1400 48V100H0Z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23102f4a' d='M0 55C138 15 275 90 413 55S688 15 825 55S963 90 1100 55V100H0Z'/%3E%3C/svg%3E");
+  opacity: 0;
 }
 
 html[data-theme='dark'] #page-header.full_page::before {
