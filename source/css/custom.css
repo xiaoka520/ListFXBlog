@@ -412,6 +412,12 @@ html #rightside .theme-toggle-widget:hover {
   filter: blur(0) saturate(1.08);
 }
 
+/* hero-parallax.js owns the one and only request for the hero image. Blanking
+   the header background while JS is available stops the browser fetching it a
+   second time, which matters because the photo endpoint returns a different
+   photo on every request. Without JS the plain background still loads. */
+html.js #page-header.full_page { background-image: none !important; }
+
 #page-header.full_page.hero-parallax::before,
 #page-header.full_page.hero-parallax::after { z-index: 2; }
 #page-header.full_page.hero-parallax #nav,
