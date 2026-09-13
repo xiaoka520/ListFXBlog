@@ -245,6 +245,16 @@
     }
   };
 
+  /* Decoding the hero image takes a round trip, so warm the pixel buffer up
+     while the page is idle. Without this the first click would sit empty for
+     as long as the image takes to download. */
+  const warmUp = () => {
+    if (source || ringsOnly) return;
+    loadSource().then(ok => {
+      if (!ok) ringsOnly = true;
+    });
+  };
+
   const init = () => {
     const el = document.querySelector('#page-header.full_page');
     if (!el || el.dataset.heroRipple) return;
@@ -264,8 +274,10 @@
     if (!ctx) return;
 
     measure();
-    hero.addEventListener('click', onClick, { passive: true });
     window.addEventListener('resize', onResize, { passive: true });
+    if ('requestIdleCallback' in window) requestIdleCallback(warmUp, { timeout: 4000 });
+    else setTimeout(warmUp, 2000);
+    hero.addEventListener('click', onClick, { passive: true });
   };
 
   if (document.readyState === 'loading') {
