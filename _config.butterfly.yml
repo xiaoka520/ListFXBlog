@@ -100,6 +100,7 @@ cover:
   aside_enable: true
   archives_enable: true
   # When cover is not set, the default cover is displayed
+  # 每篇文章会自动追加唯一参数（见 scripts/unique-post-cover.js），避免多篇文章请求到同一张图
   default_cover:
       - https://api.listfx.top/?slot=cover
 
