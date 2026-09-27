@@ -12,10 +12,10 @@
 # 想加分组就再复制一段 - class_name / class_desc / link_list。
 
 - class_name: 友人帐
-  class_desc: 欢迎交换友链
+  class_desc: 
   link_list:
     # 下面是示例条目，请替换成真实友链（或直接删掉，连同上面的分组一起）
-    - name: ListFX的博客
+    - name: FengXi的博客
       link: https://www.listfx.top/
       avatar: /img/avatar.jpg
       descr: 欢迎交换友链
